@@ -1,0 +1,31 @@
+name: Bug report
+description: Something does not behave as documented.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what you got. Error messages verbatim.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: The smallest code that shows it.
+      render: ts
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport
+      options: [Local, Cloud, Both]
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser or runtime and version, hue-web version, bridge `apiversion` (from https://<bridge>/api/0/config).
+    validations:
+      required: true

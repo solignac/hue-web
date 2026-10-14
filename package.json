@@ -1,0 +1,75 @@
+{
+  "name": "hue-web",
+  "version": "0.1.0",
+  "description": "Web wrapper for Philips Hue: local and cloud transports, IP-free pairing, and light effects that stop when you say stop.",
+  "keywords": [
+    "hue",
+    "philips-hue",
+    "smart-home",
+    "lighting",
+    "iot",
+    "effects",
+    "react",
+    "browser"
+  ],
+  "license": "MIT",
+  "author": "Thomas Solignac",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solignac/hue-web.git"
+  },
+  "homepage": "https://github.com/solignac/hue-web#readme",
+  "bugs": "https://github.com/solignac/hue-web/issues",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "default": "./dist/react.js"
+    },
+    "./relay": {
+      "types": "./dist/relay.d.ts",
+      "default": "./dist/relay.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "check": "biome check .",
+    "fix": "biome check --write .",
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "verify": "npm run check && npm run typecheck && npm test && npm run build && publint --strict && attw --pack . --profile esm-only",
+    "prepublishOnly": "npm run verify"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@biomejs/biome": "2.5.15",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "publint": "0.3.25",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "typescript": "7.0.2",
+    "vitest": "5.0.4"
+  }
+}
